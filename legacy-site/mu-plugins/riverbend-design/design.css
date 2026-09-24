@@ -3,7 +3,7 @@
    All photos are CSS backgrounds, so screen readers skip them (decorative). */
 
 :root {
-	--rb-panel: 1240px;
+	--rb-panel: min(1240px, calc(100vw - 200px)); /* always leaves room for the city on each side */
 	--rb-navy: #2b4468;
 	--rb-night: #0f1d33;
 	--rb-gold: #f2b134;
@@ -43,7 +43,7 @@ body::after {
 	background-position: 72% 40%;
 }
 
-@media (max-width: 1320px) {
+@media (max-width: 1023px) {
 	body::before,
 	body::after {
 		display: none;
@@ -51,7 +51,7 @@ body::after {
 }
 
 #page {
-	max-width: var(--rb-panel);
+	max-width: 1240px;
 	margin: 0 auto;
 	background: transparent;
 }
@@ -64,12 +64,10 @@ body::after {
 	background-color: #fff;
 }
 
-@media (min-width: 1321px) {
+@media (min-width: 1024px) {
 	#page {
-		box-shadow:
-			-30px 0 50px -20px rgba(255, 255, 255, 0.22),
-			30px 0 50px -20px rgba(255, 255, 255, 0.22),
-			0 0 110px 10px rgba(15, 29, 51, 0.6);
+		max-width: var(--rb-panel);
+		box-shadow: 0 0 110px 10px rgba(15, 29, 51, 0.6);
 	}
 }
 
@@ -108,7 +106,7 @@ body::after {
 }
 
 /* Feather the footer's side edges into the photo. */
-@media (min-width: 1321px) {
+@media (min-width: 1024px) {
 	.site-footer {
 		-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
 		mask-image: linear-gradient(90deg, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
