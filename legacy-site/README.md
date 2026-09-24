@@ -42,6 +42,7 @@ The last command takes a few minutes. It reinstalls WordPress, the theme and plu
 | `scripts/build-site.php` | Creates the pages, posts, menu, form and styles, with each barrier marked `B01`–`B13` in comments |
 | `scripts/make-images.py` | Makes the oversized "camera export" photos and the hero banner with text baked in (already run; outputs are in `assets/`) |
 | `mu-plugins/legacy-vendor-tweaks.php` | The "previous vendor's" plugin that turns off WordPress image downscaling |
+| `mu-plugins/riverbend-design.php` + `riverbend-design/` | Design layer: Atlanta skyline SVG in the side margins, title bands, tinted sections and skyline footer. Decorative CSS backgrounds only; it doesn't touch the planted barriers. |
 
 **Tip:** don't read `build-site.php` before you've done the audit (Modules 2–5). Finding the problems yourself is the point.
 

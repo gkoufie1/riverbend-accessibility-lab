@@ -1,0 +1,84 @@
+/* Riverbend design layer: Atlanta skyline framing.
+   All graphics are CSS backgrounds, so screen readers skip them (decorative). */
+
+:root {
+	--rb-navy: #2b4468;
+	--rb-navy-dark: #1f3350;
+	--rb-gold: #f2b134;
+	--rb-peach: #fbe3cf;
+	--rb-sky: #dfe9f5;
+	--rb-tint: #eef3f9;
+}
+
+/* Sky and skyline behind the page; shows in the side margins on wide screens. */
+body.ast-plain-container,
+body.ast-separate-container,
+body.ast-page-builder-template,
+body {
+	background:
+		url(skyline.svg) center bottom / 100% auto no-repeat fixed,
+		linear-gradient(180deg, var(--rb-sky) 0%, #eef1f6 45%, var(--rb-peach) 100%) fixed;
+}
+
+#page {
+	max-width: 1240px;
+	margin: 0 auto;
+	background: #fff;
+	box-shadow: 0 0 40px rgba(20, 40, 70, 0.18);
+}
+
+/* Accent stripe across the top of the header. */
+#masthead {
+	border-top: 6px solid var(--rb-gold);
+	border-image: linear-gradient(90deg, var(--rb-gold), #e07a5f, var(--rb-navy)) 1;
+}
+
+/* Title band on regular pages and posts. */
+.ast-plain-container .entry-header,
+.ast-separate-container .entry-header,
+.fl-builder-content .fl-col-content > .fl-module-heading:first-child {
+	background: var(--rb-tint);
+	border-left: 6px solid var(--rb-gold);
+	padding: 1.4em 1.6em;
+	margin-bottom: 2em;
+}
+
+@media (min-width: 922px) {
+	.ast-plain-container .entry-header,
+	.ast-separate-container .entry-header,
+	.fl-builder-content .fl-col-content > .fl-module-heading:first-child {
+		background: url(skyline.svg) right bottom / auto 100% no-repeat, var(--rb-tint);
+		padding-right: 40%;
+	}
+}
+
+/* Alternate tinted sections on Elementor pages. */
+.elementor[data-elementor-type="wp-page"] > .e-con:nth-child(even) {
+	background-color: var(--rb-tint);
+}
+
+/* Skyline band above a navy footer. */
+.site-footer::before {
+	content: "";
+	display: block;
+	height: 140px;
+	background:
+		url(skyline.svg) center bottom / auto 100% repeat-x,
+		linear-gradient(180deg, #fff, var(--rb-peach));
+}
+
+.site-footer .site-below-footer-wrap,
+.site-footer .site-primary-footer-wrap,
+.site-footer .ast-builder-grid-row-container {
+	background-color: var(--rb-navy-dark);
+}
+
+.site-footer,
+.site-footer .ast-footer-copyright,
+.site-footer .ast-footer-copyright p {
+	color: #e6edf5;
+}
+
+.site-footer a {
+	color: #ffd98a;
+}
