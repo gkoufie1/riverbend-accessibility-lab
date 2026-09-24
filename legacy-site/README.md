@@ -42,11 +42,13 @@ The last command takes a few minutes. It reinstalls WordPress, the theme and plu
 | `scripts/build-site.php` | Creates the pages, posts, menu, form and styles, with each barrier marked `B01`–`B13` in comments |
 | `scripts/make-images.py` | Makes the oversized "camera export" photos and the hero banner with text baked in (already run; outputs are in `assets/`) |
 | `mu-plugins/legacy-vendor-tweaks.php` | The "previous vendor's" plugin that turns off WordPress image downscaling |
-| `mu-plugins/riverbend-design.php` + `riverbend-design/` | Design layer: Atlanta skyline SVG in the side margins, title bands, tinted sections and skyline footer. Decorative CSS backgrounds only; it doesn't touch the planted barriers. |
+| `mu-plugins/riverbend-design.php` + `riverbend-design/` | Design layer: real Atlanta night skyline in the side margins, title bands and footer, plus tinted sections. Crops are made by `scripts/make-design-images.py`. Decorative CSS backgrounds only; it doesn't touch the planted barriers. |
 
 **Tip:** don't read `build-site.php` before you've done the audit (Modules 2–5). Finding the problems yourself is the point.
 
 ## Notes
+
+- **Photo credit:** Atlanta night skyline, "Jackson Street Bridge, Atlanta, United States" by Joey Kyber (Unsplash), via Wikimedia Commons, **CC0** public domain. No attribution is required, but it's credited here. Source: `assets/atlanta-night-jackson-st.jpg`.
 
 - The Public Comment form runs in Contact Form 7 **demo mode**. Submissions show a success message but no email is sent.
 - The map on Home loads from OpenStreetMap, so it needs an internet connection.

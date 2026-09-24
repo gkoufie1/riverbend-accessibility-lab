@@ -1,30 +1,60 @@
-/* Riverbend design layer: Atlanta skyline framing.
-   All graphics are CSS backgrounds, so screen readers skip them (decorative). */
+/* Riverbend design layer: real Atlanta night skyline.
+   Photo: "Jackson Street Bridge, Atlanta" by Joey Kyber, CC0 (see ../../scripts/make-design-images.py).
+   All photos are CSS backgrounds, so screen readers skip them (decorative). */
 
 :root {
+	--rb-panel: 1240px;
 	--rb-navy: #2b4468;
-	--rb-navy-dark: #1f3350;
+	--rb-night: #0f1d33;
 	--rb-gold: #f2b134;
-	--rb-peach: #fbe3cf;
-	--rb-sky: #dfe9f5;
 	--rb-tint: #eef3f9;
 }
 
-/* Sky and skyline behind the page; shows in the side margins on wide screens. */
+/* Night-sky fallback behind everything. */
 body.ast-plain-container,
 body.ast-separate-container,
 body.ast-page-builder-template,
 body {
-	background:
-		url(skyline.svg) center bottom / 100% auto no-repeat fixed,
-		linear-gradient(180deg, var(--rb-sky) 0%, #eef1f6 45%, var(--rb-peach) 100%) fixed;
+	background: var(--rb-night);
+}
+
+/* City at night in the side margins: Truist Plaza side left, the towers on the right. */
+body::before,
+body::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: calc((100vw - var(--rb-panel)) / 2 + 20px);
+	z-index: -1;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+body::before {
+	left: 0;
+	background-image: url(side-left.jpg);
+	background-position: 22% 40%;
+}
+
+body::after {
+	right: 0;
+	background-image: url(side-right.jpg);
+	background-position: 72% 40%;
+}
+
+@media (max-width: 1320px) {
+	body::before,
+	body::after {
+		display: none;
+	}
 }
 
 #page {
-	max-width: 1240px;
+	max-width: var(--rb-panel);
 	margin: 0 auto;
 	background: #fff;
-	box-shadow: 0 0 40px rgba(20, 40, 70, 0.18);
+	box-shadow: 0 0 60px rgba(0, 0, 0, 0.55);
 }
 
 /* Accent stripe across the top of the header. */
@@ -33,23 +63,27 @@ body {
 	border-image: linear-gradient(90deg, var(--rb-gold), #e07a5f, var(--rb-navy)) 1;
 }
 
-/* Title band on regular pages and posts. */
+/* Title band: skyline photo, darkened on the left so the white title stays readable. */
 .ast-plain-container .entry-header,
 .ast-separate-container .entry-header,
 .fl-builder-content .fl-col-content > .fl-module-heading:first-child {
-	background: var(--rb-tint);
+	background:
+		linear-gradient(90deg, rgba(15, 29, 51, 0.92) 0%, rgba(15, 29, 51, 0.7) 45%, rgba(15, 29, 51, 0.2) 100%),
+		url(banner.jpg) center 30% / cover no-repeat;
 	border-left: 6px solid var(--rb-gold);
-	padding: 1.4em 1.6em;
+	padding: 3.2em 2em;
 	margin-bottom: 2em;
 }
 
-@media (min-width: 922px) {
-	.ast-plain-container .entry-header,
-	.ast-separate-container .entry-header,
-	.fl-builder-content .fl-col-content > .fl-module-heading:first-child {
-		background: url(skyline.svg) right bottom / auto 100% no-repeat, var(--rb-tint);
-		padding-right: 40%;
-	}
+.ast-plain-container .entry-header .entry-title,
+.ast-plain-container .entry-header .entry-title a,
+.ast-separate-container .entry-header .entry-title,
+.ast-separate-container .entry-header .entry-title a,
+.ast-plain-container .entry-header .entry-meta,
+.ast-plain-container .entry-header .entry-meta a,
+.fl-builder-content .fl-col-content > .fl-module-heading:first-child .fl-heading,
+.fl-builder-content .fl-col-content > .fl-module-heading:first-child .fl-heading-text {
+	color: #fff;
 }
 
 /* Alternate tinted sections on Elementor pages. */
@@ -57,20 +91,21 @@ body {
 	background-color: var(--rb-tint);
 }
 
-/* Skyline band above a navy footer. */
+/* Highway light trails fading into a navy footer. */
 .site-footer::before {
 	content: "";
 	display: block;
-	height: 140px;
+	height: 180px;
 	background:
-		url(skyline.svg) center bottom / auto 100% repeat-x,
-		linear-gradient(180deg, #fff, var(--rb-peach));
+		linear-gradient(180deg, rgba(31, 51, 80, 0) 55%, #1f3350 100%),
+		url(footer.jpg) center 45% / cover no-repeat;
 }
 
 .site-footer .site-below-footer-wrap,
 .site-footer .site-primary-footer-wrap,
 .site-footer .ast-builder-grid-row-container {
-	background-color: var(--rb-navy-dark);
+	background-color: #1f3350;
+	border-top-color: transparent;
 }
 
 .site-footer,
