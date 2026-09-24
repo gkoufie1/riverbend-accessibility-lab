@@ -56,19 +56,20 @@ body::after {
 	background: transparent;
 }
 
-/* White panel = header + content. A soft white glow on the left and right only feathers their edges
-   into the photo; the footer paints over the glow, so it stops at the footer. */
+/* White panel = header + content; the footer fades into the photo below.
+   The edge shading sits on #page, so only its left and right edges show on
+   screen and nothing spills over the header or content. */
 #masthead,
 .site-content {
 	background-color: #fff;
 }
 
 @media (min-width: 1321px) {
-	#masthead,
-	.site-content {
+	#page {
 		box-shadow:
-			-70px 0 80px -35px rgba(255, 255, 255, 0.9),
-			70px 0 80px -35px rgba(255, 255, 255, 0.9);
+			-30px 0 50px -20px rgba(255, 255, 255, 0.22),
+			30px 0 50px -20px rgba(255, 255, 255, 0.22),
+			0 0 110px 10px rgba(15, 29, 51, 0.6);
 	}
 }
 
