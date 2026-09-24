@@ -1,0 +1,2 @@
+ID,Page,Element,Issue,WCAG SC,Level,Found by,Planted ID,Severity,Who is affected,Fix location,Fix description,Status,Before screenshot,After screenshot,Retest result,Retest date
+F001,Home,Hero banner image,Image has no alt text and the event details are only in the image,1.1.1 / 1.4.5,A / AA,axe,B01,High,Screen reader users; low-vision users who zoom,Page builder,,Open,before/B01-hero.png,,,
