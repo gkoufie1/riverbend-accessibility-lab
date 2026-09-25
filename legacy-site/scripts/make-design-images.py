@@ -1,4 +1,4 @@
-"""Crop the Atlanta night skyline photo into web-sized pieces for the design layer.
+"""Crop the Atlanta night skyline photo for the footer band of the design layer.
 
 Source: "Jackson Street Bridge, Atlanta, United States" by Joey Kyber (Unsplash),
 via Wikimedia Commons. License: CC0 1.0 (public domain dedication).
@@ -22,7 +22,4 @@ def save(box, width, name):
     print(f"{name}: {crop.size[0]}x{crop.size[1]}, {(OUT / name).stat().st_size // 1024} KB")
 
 
-save((0, 0, 1728, 2560), 900, "side-left.jpg")        # Truist Plaza side
-save((2300, 0, 3840, 2560), 900, "side-right.jpg")     # right-hand towers
-save((0, 60, 3840, 1500), 1920, "banner.jpg")          # skyline for title bands
 save((0, 1400, 3840, 2560), 1920, "footer.jpg")        # highway light trails

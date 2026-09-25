@@ -1,132 +1,466 @@
-/* Riverbend design layer: real Atlanta night skyline.
-   Photo: "Jackson Street Bridge, Atlanta" by Joey Kyber, CC0 (see ../../scripts/make-design-images.py).
-   All photos are CSS backgrounds, so screen readers skip them (decorative). */
+/* Riverbend design layer: government-portal look.
+   Layout only: it does not change body text color, link underlines or focus styles,
+   so the planted barriers (B06-B09) stay exactly as the "previous vendor" left them.
+   Footer photo: "Jackson Street Bridge, Atlanta" by Joey Kyber, CC0 (see ../../scripts/make-design-images.py). */
 
 :root {
-	--rb-panel: min(1240px, calc(100vw - 200px)); /* always leaves room for the city on each side */
-	--rb-navy: #2b4468;
-	--rb-night: #0f1d33;
-	--rb-gold: #f2b134;
-	--rb-tint: #eef3f9;
+	--rb-wrap: 1170px;
+	--rb-navy: #2c3e50;
+	--rb-navy-dark: #1f3350;
+	--rb-blue: #1b75bb;
+	--rb-page: #e3ebf0;
+	--rb-card: #fff;
+	--rb-green: #3aa655;
+	--rb-gold: #e0b24a;
+	--rb-tint: #f1f5f8;
 }
 
-/* Night-sky fallback behind everything. */
 body.ast-plain-container,
 body.ast-separate-container,
 body.ast-page-builder-template,
 body {
-	background: var(--rb-night);
+	background: var(--rb-page);
 }
 
-/* City at night in the side margins: Truist Plaza side left, the towers on the right. */
-body::before,
-body::after {
-	content: "";
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	width: calc((100vw - var(--rb-panel)) / 2 + 20px);
-	z-index: -1;
-	background-size: cover;
-	background-repeat: no-repeat;
+.rb-topbar,
+.rb-breadcrumb,
+.site-content .ast-container,
+.site-footer {
+	font-family: "Lato", -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-body::before {
-	left: 0;
-	background-image: url(side-left.jpg);
-	background-position: 22% 40%;
+/* ---- Header: white top section ------------------------------------------ */
+
+.rb-topbar {
+	background: #fff;
 }
 
-body::after {
-	right: 0;
-	background-image: url(side-right.jpg);
-	background-position: 72% 40%;
-}
-
-@media (max-width: 1023px) {
-	body::before,
-	body::after {
-		display: none;
-	}
-}
-
-#page {
-	max-width: 1240px;
+.rb-topbar-inner {
+	display: flex;
+	align-items: flex-start;
+	gap: 32px;
+	max-width: var(--rb-wrap);
 	margin: 0 auto;
-	background: transparent;
+	padding: 14px 20px 18px;
 }
 
-/* White panel = header + content; the footer fades into the photo below.
-   The edge shading sits on #page, so only its left and right edges show on
-   screen and nothing spills over the header or content. */
-#masthead,
-.site-content {
-	background-color: #fff;
+.rb-brand-link {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	color: #111;
 }
 
-@media (min-width: 1024px) {
-	#page {
-		max-width: var(--rb-panel);
-		box-shadow: 0 0 110px 10px rgba(15, 29, 51, 0.6);
+.rb-seal {
+	flex: none;
+	width: 112px;
+	height: 112px;
+}
+
+.rb-brand-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.rb-kicker {
+	font-size: 15px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--rb-blue);
+}
+
+.rb-name {
+	max-width: 12em;
+	font-size: 27px;
+	font-weight: 900;
+	line-height: 1.15;
+	color: #111;
+}
+
+.rb-chair {
+	margin: 6px 0 0 130px;
+	font-size: 16px;
+	font-weight: 700;
+	font-style: italic;
+	color: var(--rb-blue);
+}
+
+.rb-demo {
+	white-space: nowrap;
+	margin-left: 8px;
+	padding: 1px 7px;
+	border-radius: 3px;
+	background: var(--rb-gold);
+	color: #1a1a1a;
+	font-size: 11px;
+	font-style: normal;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+.rb-officers {
+	padding: 4px 0 4px 26px;
+	border-left: 1px solid #333;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--rb-blue);
+}
+
+.rb-officers-title {
+	margin: 0 0 6px;
+	font-size: 13px;
+	font-weight: 900;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: #111;
+}
+
+.rb-officers ul,
+.rb-utility ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.rb-officers li {
+	margin: 0 0 4px;
+}
+
+.rb-utility {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 14px;
+	margin-left: auto;
+}
+
+.rb-utility ul {
+	display: flex;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.rb-utility li + li {
+	margin-left: 10px;
+	padding-left: 10px;
+	border-left: 2px solid var(--rb-blue);
+}
+
+.rb-search {
+	display: flex;
+	width: 250px;
+}
+
+.rb-search input[type="search"] {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	padding: 10px 14px;
+	border: 1px solid #c9d3da;
+	border-right: 0;
+	border-radius: 6px 0 0 6px;
+	background: #eef1f3;
+	font-size: 15px;
+}
+
+.rb-search button {
+	display: grid;
+	place-items: center;
+	width: 52px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0 6px 6px 0;
+	background: var(--rb-blue);
+	color: #fff;
+	cursor: pointer;
+}
+
+/* ---- Header: navy menu bar ---------------------------------------------- */
+
+#ast-desktop-header .ast-primary-header-bar,
+#ast-mobile-header .ast-primary-header-bar {
+	background: var(--rb-navy);
+	border-top: 5px solid var(--rb-blue);
+	border-bottom: 0;
+}
+
+#ast-desktop-header .site-branding,
+#ast-mobile-header .site-branding {
+	display: none;
+}
+
+#ast-desktop-header .ast-builder-grid-row {
+	max-width: var(--rb-wrap);
+	margin: 0 auto;
+}
+
+/* The name lives in the top section, so the bar holds just the menu, left-aligned. */
+#ast-desktop-header .ast-builder-grid-row {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 20px;
+	grid-template-columns: 1fr;
+}
+
+#ast-desktop-header .site-header-primary-section-left {
+	display: none;
+}
+
+#ast-desktop-header .site-header-primary-section-right {
+	justify-content: flex-start;
+}
+
+#ast-desktop-header .main-header-menu > .menu-item:first-child > .menu-link {
+	padding-left: 0;
+}
+
+.main-header-menu .menu-item > .menu-link,
+.ast-builder-menu-1 .menu-item > .menu-link,
+#ast-mobile-header .menu-toggle,
+#ast-mobile-header .ast-mobile-svg {
+	color: #fff;
+	fill: #fff;
+	font-family: "Lato", -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 16px;
+}
+
+#masthead .ast-builder-menu-1 .menu-item > .menu-link:hover,
+#masthead .ast-builder-menu-1 .menu-item.current-menu-item > .menu-link {
+	color: #ffd98a;
+}
+
+/* ---- Breadcrumbs ------------------------------------------------------- */
+
+.rb-breadcrumb-bar {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: var(--rb-wrap);
+	margin: 0 auto;
+	padding: 14px 20px 0;
+}
+
+.rb-breadcrumb ol {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 15px;
+}
+
+.rb-breadcrumb li + li::before {
+	content: "/";
+	margin: 0 8px;
+	color: #6b7780;
+}
+
+.rb-breadcrumb a {
+	color: #0b57a4; /* 6.0:1 on the grey page background */
+}
+
+.rb-breadcrumb [aria-current="page"] {
+	color: #111;
+}
+
+/* ---- Content card and sidebar panel --------------------------------------- */
+
+.site-content > .ast-container {
+	max-width: var(--rb-wrap);
+	gap: 30px;
+	padding-top: 14px;
+	padding-bottom: 40px;
+}
+
+.site-content #primary {
+	margin: 0;
+	padding: 26px 20px 30px;
+	border-radius: 8px;
+	background: var(--rb-card);
+}
+
+.ast-right-sidebar #primary {
+	flex: 1 1 auto;
+	width: auto;
+	border-right: 0;
+}
+
+.ast-right-sidebar #secondary {
+	flex: 0 0 330px;
+	width: 330px;
+}
+
+/* Beaver Builder pages (no sidebar): keep the card at the same width as other pages. */
+body.ast-page-builder-template .site-content > .ast-container {
+	max-width: var(--rb-wrap);
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.ast-page-builder-template .site-content #primary {
+	width: 100%;
+}
+
+.ast-page-builder-template .entry-header {
+	background: none;
+}
+
+@media (max-width: 921px) {
+	.ast-right-sidebar #secondary {
+		flex-basis: auto;
+		width: 100%;
 	}
 }
 
-/* Accent stripe across the top of the header. */
-#masthead {
-	border-top: 6px solid var(--rb-gold);
-	border-image: linear-gradient(90deg, var(--rb-gold), #e07a5f, var(--rb-navy)) 1;
+.ast-right-sidebar #secondary {
+	margin: 0;
+	padding: 0;
+	border-left: 0;
 }
 
-/* Title band: skyline photo, darkened on the left so the white title stays readable. */
-.ast-plain-container .entry-header,
-.ast-separate-container .entry-header,
-.fl-builder-content .fl-col-content > .fl-module-heading:first-child {
-	background:
-		linear-gradient(90deg, rgba(15, 29, 51, 0.92) 0%, rgba(15, 29, 51, 0.7) 45%, rgba(15, 29, 51, 0.2) 100%),
-		url(banner.jpg) center 30% / cover no-repeat;
-	border-left: 6px solid var(--rb-gold);
-	padding: 3.2em 2em;
-	margin-bottom: 2em;
+.entry-header {
+	margin-bottom: 1.2em;
+	padding-bottom: 14px;
+	background: linear-gradient(90deg, #cfd8de, rgba(207, 216, 222, 0)) bottom / 100% 1px no-repeat;
 }
 
-.ast-plain-container .entry-header .entry-title,
-.ast-plain-container .entry-header .entry-title a,
-.ast-separate-container .entry-header .entry-title,
-.ast-separate-container .entry-header .entry-title a,
-.ast-plain-container .entry-header .entry-meta,
-.ast-plain-container .entry-header .entry-meta a,
-.fl-builder-content .fl-col-content > .fl-module-heading:first-child .fl-heading,
-.fl-builder-content .fl-col-content > .fl-module-heading:first-child .fl-heading-text {
+.entry-title {
+	font-weight: 900;
+	color: #111;
+}
+
+.entry-content ul > li::marker {
+	content: "\25B8  ";
+	color: var(--rb-green);
+}
+
+.rb-panel {
+	padding: 30px 28px 28px;
+	border-radius: 8px;
+	background: var(--rb-navy);
+	color: #fff;
+	font-family: "Lato", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.rb-panel-title {
+	margin: 0 0 16px;
+	font-size: 26px;
+	font-weight: 900;
+	letter-spacing: -0.01em;
 	color: #fff;
 }
 
-/* Alternate tinted sections on Elementor pages. */
+.rb-quick {
+	margin: 0 0 28px;
+	padding: 0;
+	list-style: none;
+}
+
+.rb-quick li {
+	position: relative;
+	margin: 0 0 10px;
+	padding-left: 14px;
+}
+
+.rb-quick li::before {
+	content: "\25B8";
+	position: absolute;
+	left: 0;
+	color: var(--rb-green);
+	font-size: 12px;
+	line-height: 1.8;
+}
+
+.rb-panel a {
+	color: #fff;
+}
+
+.rb-events {
+	margin: 0 -8px -8px;
+	padding: 22px 20px 12px;
+	border-radius: 8px;
+	background: #3d5166;
+}
+
+.rb-events ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.rb-events li {
+	display: flex;
+	gap: 14px;
+	margin: 0 0 18px;
+}
+
+.rb-date {
+	display: flex;
+	flex: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 58px;
+	height: 60px;
+	border-radius: 8px;
+	background: #dbe9f4;
+	color: #1a1a1a;
+	line-height: 1;
+}
+
+.rb-date span:first-child {
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.rb-date span:last-child {
+	font-size: 26px;
+	font-weight: 900;
+}
+
+.rb-event-text {
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.rb-event-text time {
+	font-weight: 900;
+}
+
+/* ---- Home page (Elementor): content card ------------------------------- */
+
+.elementor[data-elementor-type="wp-page"] {
+	max-width: var(--rb-wrap);
+	margin: 22px auto 40px;
+	overflow: hidden;
+	border-radius: 8px;
+	background: var(--rb-card);
+}
+
 .elementor[data-elementor-type="wp-page"] > .e-con:nth-child(even) {
 	background-color: var(--rb-tint);
 }
 
-/* Feather the footer's side edges into the photo. */
-@media (min-width: 1024px) {
-	.site-footer {
-		-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
-		mask-image: linear-gradient(90deg, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
-	}
-}
+/* ---- Footer: highway light trails into navy ------------------------------ */
 
-/* Highway light trails fading into a navy footer. */
 .site-footer::before {
 	content: "";
 	display: block;
-	height: 180px;
+	height: 170px;
 	background:
-		linear-gradient(180deg, rgba(31, 51, 80, 0) 55%, #1f3350 100%),
+		linear-gradient(180deg, rgba(31, 51, 80, 0) 50%, var(--rb-navy-dark) 100%),
 		url(footer.jpg) center 45% / cover no-repeat;
 }
 
 .site-footer .site-below-footer-wrap,
 .site-footer .site-primary-footer-wrap,
 .site-footer .ast-builder-grid-row-container {
-	background-color: #1f3350;
+	background-color: var(--rb-navy-dark);
 	border-top-color: transparent;
 }
 
@@ -138,4 +472,48 @@ body::after {
 
 .site-footer a {
 	color: #ffd98a;
+}
+
+/* ---- Smaller screens ----------------------------------------------------- */
+
+@media (max-width: 921px) {
+	.rb-topbar-inner {
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.rb-seal {
+		width: 72px;
+		height: 72px;
+	}
+
+	.rb-name {
+		font-size: 21px;
+	}
+
+	.rb-chair {
+		margin-left: 0;
+	}
+
+	.rb-officers {
+		display: none;
+	}
+
+	.rb-utility {
+		width: 100%;
+		align-items: stretch;
+		margin-left: 0;
+	}
+
+	.rb-utility nav {
+		display: none;
+	}
+
+	.rb-search {
+		width: 100%;
+	}
+
+	.site-content > .ast-container {
+		gap: 20px;
+	}
 }

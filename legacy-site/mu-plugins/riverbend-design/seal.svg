@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <path id="ring" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/>
+  </defs>
+  <circle cx="100" cy="100" r="98" fill="#1f3350"/>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#e0b24a" stroke-width="3"/>
+  <circle cx="100" cy="100" r="60" fill="#f4e7c3" stroke="#e0b24a" stroke-width="3"/>
+  <text font-family="Georgia, serif" font-size="15" font-weight="bold" fill="#f4e7c3" letter-spacing="2.2">
+    <textPath href="#ring" startOffset="0">RIVERBEND REGIONAL COMMISSION ★ EST. 1971 ★</textPath>
+  </text>
+  <!-- Skyline -->
+  <g fill="#1f3350">
+    <rect x="66" y="78" width="12" height="36"/>
+    <rect x="80" y="64" width="12" height="50"/>
+    <polygon points="80,64 86,52 92,64"/>
+    <rect x="94" y="72" width="14" height="42"/>
+    <rect x="110" y="58" width="11" height="56"/>
+    <polygon points="110,58 115.5,46 121,58"/>
+    <rect x="123" y="82" width="12" height="32"/>
+  </g>
+  <!-- River bend -->
+  <path d="M48,128 C78,114 92,138 116,126 S146,112 154,122" fill="none" stroke="#2f7fc1" stroke-width="7" stroke-linecap="round"/>
+  <path d="M52,140 C80,128 96,150 120,138 S144,126 150,134" fill="none" stroke="#2f7fc1" stroke-width="4" stroke-linecap="round" opacity=".6"/>
+</svg>
