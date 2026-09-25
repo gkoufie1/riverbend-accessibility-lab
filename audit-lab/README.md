@@ -270,9 +270,9 @@ Don't rebuild pages. Fix the site **in place**, the way ARC wants: "incrementall
   ```
 - [ ] **B09 sticky header:** use the easiest fix that works: remove the forced `min-height`, and add
   ```css
-  html { scroll-padding-top: 180px; }
+  html { scroll-padding-top: 280px; }
   ```
-  so focused items scroll into view below the header. Retest with Shift+Tab.
+  so focused items scroll into view below the header. The header is about 260px tall, so measure yours in DevTools first. Better still, ask whether the big top section needs to be sticky at all; often only the navy menu bar does. Retest with Shift+Tab.
 - [ ] **B04 tiny icons:** set the social icon size to at least 24px, with spacing of 8px or more. Also check that each icon has an accessible name.
 - [ ] **B11 reflow:** change `width:900px` to `max-width:900px`. Retest at 400% zoom.
 
