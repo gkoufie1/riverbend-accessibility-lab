@@ -2,7 +2,6 @@
 
 A hands-on project: audit and fix an inherited WordPress site, one step at a time, without rebuilding it.
 
-**Riverbend Regional Commission is fictional.** The site is a demo built for accessibility and WordPress training.
 
 | Folder | What's inside |
 |---|---|
